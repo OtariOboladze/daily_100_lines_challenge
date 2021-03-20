@@ -1,8 +1,15 @@
 <?php
 
+$message = $nombre = $numero = $edad = $message = '';
 
+// print_r($_GET); //aray visualize
 
-
+if (isset($_REQUEST['enviar'])) {
+    $nombre = $_REQUEST['nombre'];
+    $numero = $_REQUEST['telefono'];
+    $edad = $_REQUEST['edad'];
+    $message = "<br>$nombre $edad $numero";
+}
 
 ?>
 
@@ -17,11 +24,14 @@
 </head>
 
 <body>
-    <form action="procesaFormulario.php" method="get">
-        <input type="text" name="nombre" placeholder="nombre">
-        <input type="text" name="telefono" placeholder="telefono">
-        <input type="text" name="edad" value="edad">
-        <input type="submit" value="Enviar">
+    <form action="#" method="get" autocomplete="off">
+        <input type="text" name="nombre" placeholder="nombre" required value="<?= $nombre; ?>">
+        <input type="number" name="telefono" placeholder="telefono" required value="<?= $numero; ?>">
+        <input type="password" name="passwrd">
+        <input type="text" name="edad" placeholder="edad"><br><br>
+        <input type="submit" value="Enviiiar" name="enviar">
+        <br>
+        <?= $message; ?>
     </form>
 </body>
 
