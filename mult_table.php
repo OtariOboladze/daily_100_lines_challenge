@@ -3,18 +3,22 @@
 $numero = $resultado = null;
 
 if (isset($_POST['enviar'])) {
-    if ($tabla = filter_input(INPUT_POST, 'numero', FILTER_VALIDATE_INT)) {
-        if ($tabla <= 0 || $tabla >= 10) {
-            $resultado = 'Numero fuera de rango';
-        } else {
-            for ($c = 1; $c <= 10; $c++) {
-                $resultado .= "$tabla x $c = " . ($tabla * $c) . '<br>';
-            }
+    try {
+        $tabla = $_POST['numero'];
+        if (!is_numeric($tabla)) {
+            throw new Exception("Debe introducir un numero", 11);
         }
-    } else {
-        $resultado = 'Debe introducir un numero';
+        if ($tabla <= 0 || $tabla >= 10) {
+            throw new Exception('Numero fuera de rango', 10);
+        }
+        for ($c = 1; $c <= 10; $c++) {
+            $resultado .= "$tabla x $c = " . ($tabla * $c) . '<br>';
+        }
+    } catch (Exception $e) {
+        $resultado = $e->getCode() . ' ' . $e->getMessage();
     }
 }
+
 ?>
 
 
