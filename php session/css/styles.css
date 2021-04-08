@@ -25,3 +25,8 @@ form {
   cursor: pointer;
   border: 2px solid black;
 } */
+
+.nombre, .direccion{
+  cursor: pointer;
+  border: 2px solid black;
+}
