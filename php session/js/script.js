@@ -23,7 +23,7 @@ function modificar_personas() {
 
   // alert(nif);
 
-  if ((document.querySelector("[name=nif_mod]").value = nif)) {
+  document.querySelector("[name=nif_mod]").value = nif;
   document.querySelector("[name=nombre_mod]").value = nombre;
   document.querySelector("[name=direccion_mod]").value = direccion;
 
