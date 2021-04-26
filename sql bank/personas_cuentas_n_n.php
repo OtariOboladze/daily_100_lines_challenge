@@ -4,7 +4,7 @@
 header('Content-Type: text/html; charset=UTF-8');
 
 //variables para sql insert
-$nif = 'ragdfjejme';
+$nif = 'ragdfjeje';
 $nombre = addslashes('rumfertg&/geee');
 $apellido = addslashes('hagidedasa');
 // $apellido = '); DROP TABLE personas #';  <-  code injection 
@@ -15,6 +15,9 @@ $email = 'klde@mgelkua.com';
 try {
     //incorporar fichero de coneccion
     require 'connection_bank_2.php';
+
+    //habilitar transaccion
+    mysqli_autocommit($connection_bank, FALSE);
 
     //insert en la tabla de personas
     $sql = "INSERT INTO personas VALUES (NULL, '$nif', '$nombre','$apellido','$direccion','$telefono','$email', DEFAULT)";
@@ -34,7 +37,7 @@ try {
     //insert en la tabla de cuentas
     $entidad = '0634';
     $oficina = '0780';
-    $dc = '56';
+    $dc = '86';
     $cuentas = '16345';
     $saldo = 234;
 
@@ -62,7 +65,14 @@ try {
         }
     };
 
+    //trasladar los cambios a bd
+    mysqli_commit($connection_bank);
+
     echo "persona añadida corctamente con el id $idp y cuenta $idc";
 } catch (Exception $e) {
+
+    //free up resources
+    mysqli_rollback($connection_bank);
+
     echo $e->getMessage();
 }
