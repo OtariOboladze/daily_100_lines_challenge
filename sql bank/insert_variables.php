@@ -2,10 +2,10 @@
 
 try {
     //incorporar fichero de coneccion
-    require 'connection_bank_2.php';
+    require 'connection_bank_1.php';
 
 //variables para sql insert
-$nif = 'ragferdfererfgtjme';
+$nif = 'ragfgtjme';
 $nombre = addslashes('rumfertgj·$%!"·%&/geee'); 
 $apellido = addslashes('hagidedasa');
 // $apellido = '); DROP TABLE personas #';  <-  code injection 
