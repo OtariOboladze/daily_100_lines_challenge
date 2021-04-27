@@ -9,12 +9,12 @@ header('Content-Type: text/html; charset=UTF-8');
 try {
     require 'connection_bank_1.php';
 
-    $sql = "SELECT * FROM personas";
+    $sql = "SELECT nombre FROM personas ORDER BY nombre";
 
     if (!$resultado = mysqli_query($connection_bank, $sql)) {
         throw new Exception(mysqli_error($connection_bank));
     }
-
+mysqli_aff
     // print_r($resultado);
 
     //შეამოწმე დბ აბრუნებს თუ არა 0 რიგს
