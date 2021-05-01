@@ -9,12 +9,14 @@ header('Content-Type: text/html; charset=UTF-8');
 try {
     require 'connection_bank_1.php';
 
-    $sql = "SELECT nombre FROM personas ORDER BY nombre";
+    $sql = "SELECT * FROM personas ORDER BY nombre";
 
     if (!$resultado = mysqli_query($connection_bank, $sql)) {
         throw new Exception(mysqli_error($connection_bank));
     }
-mysqli_aff
+
+    // mysqli_affected_rows();
+
     // print_r($resultado);
 
     //შეამოწმე დბ აბრუნებს თუ არა 0 რიგს
@@ -35,6 +37,11 @@ mysqli_aff
     while ($datos = mysqli_fetch_assoc($resultado)) {
         array_push($rows, $datos);
     }
+
+    //ejercicio
+    // foreach ($rows as $key => $value) {
+    //     echo '<br>' . $value['timestamp'];
+    // }
 
     echo "<pre>" . print_r($rows, true) . "</pre>";
 } catch (Exception $e) {
