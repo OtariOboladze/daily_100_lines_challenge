@@ -20,16 +20,23 @@ try {
         throw new Exception("Apellido obligatorio", 11);
     }
 
-    //confeccionar el mensaje
-    // $texto = "$nombre $apellidos";
-    $mensaje = "00$nombre $apellidos";
+    //confeccionar el mensaje tipo texto
+    // $mensaje = "00$nombre $apellidos";
+
+    //confeccionar el mensaje tipo array
+    $mensaje = array("00", "$nombre $apellidos");
 } catch (Exception $e) {
-    $mensaje = $e->getCode() . ' ' . $e->getMessage();
+    //confeccionar mensaje de error tipo texto
+    // $mensaje = $e->getCode() . ' ' . $e->getMessage();
+
+    //confeccionar mensaje de error tipo array
+    $mensaje = array($e->getCode(), $e->getMessage());
 }
 // }
 
 
-//enviar la respuesta del servidor
-echo $mensaje;
+//enviar la respuesta del servidor (texto)
+// echo $mensaje;
 
-?>
+//enviar la respuesta del servidor (json)
+echo json_encode($mensaje);

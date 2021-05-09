@@ -8,7 +8,7 @@ function enviar_peticion_ajax() {
   let apellidos = document.querySelector("#apellidos").value.trim();
 
   //limpiar el span de errorres
-  document.querySelector("#mensajes").innerText = "";
+  document.querySelector("#mensaje").innerText = "";
 
   //opcionalmente: validr los datos
 
@@ -25,9 +25,19 @@ function enviar_peticion_ajax() {
 
 //recoger la respuesta del servidor
 function respuesta_servidor(respuesta) {
-  //extraer de la respuesta codigo y mensaje
-  let codigo_respuesta = respuesta.substring(0, 2);
-  let mensaje = respuesta.substring(2);
+  //extraer de la respuesta codigo y mensaje (si tipo texto)
+  // let codigo_respuesta = respuesta.substring(0, 2);
+  // let mensaje = respuesta.substring(2);
+
+  //extraer de la respuesta codigo y mensaje (si tipo json)
+
+  //1. convertir json a array
+  let array_respuesta = JSON.parse(respuesta);
+
+  //2. extraer los datos e array
+  let codigo_respuesta = array_respuesta[0];
+  let mensaje = array_respuesta[1];
+
   if (codigo_respuesta == "00") {
     //enviar mensaje a textarea
     document.querySelector("#texto").value = mensaje;
