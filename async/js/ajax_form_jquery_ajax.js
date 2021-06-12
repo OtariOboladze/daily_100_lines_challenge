@@ -4,7 +4,7 @@ document.querySelector("#enviar").onclick = enviar_peticion_ajax;
 //funcion para realizar la peticion ajax
 function enviar_peticion_ajax() {
   //recuperar los datos
-  let nombre = document.querySelector("#nombre").value.trim();
+  let nombre2 = document.querySelector("#nombre").value.trim();
   let apellidos = document.querySelector("#apellidos").value.trim();
 
   //limpiar el span de errorres
@@ -12,19 +12,46 @@ function enviar_peticion_ajax() {
 
   //opcionalmente: validr los datos
 
-  //montar la peticion ajax jQuery
+  //montar la peticion ajax jQuery ($.post, $.get)
   let datos_peticion = {
-    nombre: nombre,
+    nombre3: nombre2,
     apellidos: apellidos,
   };
   let servicio = "web_services/ajax_form.php";
 
+  let tipo_peticion = "post";
+
   //enviar la peticion ($.post, $.get)
-  $.post(servicio, datos_peticion, respuesta_servidor);
+  $.ajax({
+    url: servicio,
+    type: tipo_peticion,
+    data: datos_peticion,
+
+    success: function (respuesta) {
+      //codigo a ejecutar quendo se reciba la respuesta
+      document.querySelector("#mensaje").innerText = "";
+      respuesta_servidor(respuesta);
+    },
+    error: function (error) {
+      //codigo a ejecutar si se produce un error en la peticion
+      console.log(error);
+      alert("Algo ha ido mal");
+    },
+    complete: function () {
+      //codigo a ejecutarcuando la peticion se completa, tanto si hay error como si no hay
+      // alert("Peticion completada");
+    },
+    beforeSend: function () {
+      //codgo a ejecutar antes de enviar la peticion
+      document.querySelector("#mensaje").innerHTML =
+        "<img src='images/bird.gif'>";
+    },
+  });
 }
 
 //recoger la respuesta del servidor
 function respuesta_servidor(respuesta) {
+  // alert(respuesta)
   //extraer de la respuesta codigo y mensaje (si tipo texto)
   // let codigo_respuesta = respuesta.substring(0, 2);
   // let mensaje = respuesta.substring(2);

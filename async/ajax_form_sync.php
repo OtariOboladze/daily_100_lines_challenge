@@ -7,7 +7,6 @@ if (isset($_POST['enviar'])) {
     //recuperar los datos
     $nombre = trim($_POST['nombre']);
     $apellidos = trim($_POST['apellidos']);
-
     try {
         //validar los dato
         if (empty($nombre)) {
@@ -16,7 +15,6 @@ if (isset($_POST['enviar'])) {
         if (empty($apellidos)) {
             throw new Exception("Apellido obligatorio", 11);
         }
-
         //confeccionar el mensaje
         $texto = "$nombre $apellidos";
     } catch (Exception $e) {
@@ -24,20 +22,23 @@ if (isset($_POST['enviar'])) {
     }
 }
 
-
 ?>
 
-
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        form {
+            width: 400px;
+            margin: auto;
+            border: solid 1px red;
+            padding: 20px;
+        }
+    </style>
 </head>
-
 <body>
     <form action="#" method="post">
         <input type="text" name="nombre" value="<?= $nombre ?>"><br>
