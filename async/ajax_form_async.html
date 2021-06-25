@@ -15,20 +15,20 @@
         border: solid 1px red;
         padding: 20px;
       }
-      img{
+      img {
         width: 50px;
       }
     </style>
   </head>
 
   <body>
-    <form>
-      <input type="text" id="nombre" /><br />
-      <input type="text" id="apellidos" /><br /><br />
-      <input type="button" value="Enviar" id="enviar" /><br /><br />
+    <form id="formulario" onsubmit="javascript: event.preventDefault()">
+      <input type="text" id="nombre" name="nombre" required/><br />
+      <input type="text" id="apellidos" name="apellidos" required/><br /><br />
+      <input type="submit" value="Enviar" id="enviar" /><br /><br />
       <textarea id="texto"></textarea><br /><br />
       <span id="mensaje"></span>
     </form>
   </body>
-  <script type="text/javascript" src="js/ajax_form_jquery_ajax.js"></script>
+  <script type="text/javascript" src="js/ajax_form_js_fetch.js"></script>
 </html>

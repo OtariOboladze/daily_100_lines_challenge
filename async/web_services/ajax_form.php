@@ -8,7 +8,7 @@
 //comprobar si se ha pulsado enviar
 // if (isset($_POST['enviar'])) {
 //recuperar los datos
-$nombre4 = trim($_POST['nombre3']);
+$nombre4 = trim($_POST['nombre']);
 $apellidos = trim($_POST['apellidos']);
 
 try {
@@ -39,5 +39,5 @@ try {
 // echo $mensaje;
 
 //enviar la respuesta del servidor (json)
-sleep(2); //detener la ejecution del codigo 2s
+// sleep(2); //detener la ejecution del codigo 2s
 echo json_encode($mensaje);
