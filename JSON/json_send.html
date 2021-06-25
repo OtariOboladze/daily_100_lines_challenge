@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+    ></script>
+    <script>
+      //array de objetos a enviar al servidor
+      let array_personas = {
+        persona1: {
+          nombre: "something",
+          direccion: "some address, 11",
+        },
+        persona2: {
+          nombre: "haidedasa",
+          direccion: "gilgameshis fari, 41",
+        },
+      };
+      //preparar peticion ajax
+      let servicio = "web_services/json_receive.php";
+
+      //convertir array de objetos a json
+      let datos_peticion = { personas: JSON.stringify(array_personas) };
+
+      $.post(servicio, datos_peticion, respuesta);
+
+      function respuesta(e) {
+        alert(e);
+      }
+    </script>
+  </head>
+
+  <body></body>
+</html>

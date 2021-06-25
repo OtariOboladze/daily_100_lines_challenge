@@ -1,0 +1,34 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+    ></script>
+    <script>
+      //preparar peticion ajax
+      let servicio = "web_services/json_send.php";
+
+      $.post(servicio, {}, respuesta);
+
+      function respuesta(e) {
+        //convertir json a array de objetos
+        let array_personas = JSON.parse(e);
+
+        for (i in array_personas) {
+          document.write(
+            array_personas[i].name +
+              " " +
+              array_personas[i].gvari +
+              "<br>"
+          );
+        }
+      }
+    </script>
+  </head>
+
+  <body></body>
+</html>
