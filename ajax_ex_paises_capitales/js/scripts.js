@@ -30,7 +30,7 @@ function consultar_pais() {
   document.querySelector("#capitales").value = pais;
 }
 
-function llamada_ajax(servicio, parametros, tipo_respuesta) {
+async function llamada_ajax(servicio, parametros, tipo_respuesta) {
   //petition ajax
   fetch(servicio, parametros)
     .then((respuesta) => {
